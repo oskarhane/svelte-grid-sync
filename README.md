@@ -1,38 +1,11 @@
-# create-svelte
+## svelte-grid-sync
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Tiny demo app to show peer-to-peer (via WebRTC) CRDT multiplayer capabilties.
+Click in the grid to color it, choose which color down below.  
+Uses Yjs's WebRTC connector and signaling server to connect users, so no backend is involved after the discovery step.  
+The grid will clear when noone's around anymore.
 
-## Creating a project
+Uses convienicen library [syncedstore](https://syncedstore.org/docs/) on top of [Yjs](https://docs.yjs.dev).  
+Those makes this super simple.
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Interactive demo: https://lavish-number.surge.sh/
