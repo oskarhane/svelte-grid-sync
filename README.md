@@ -5,7 +5,7 @@ Click in the grid to color it, choose which color down below.
 Uses Yjs's WebRTC connector and signaling server to connect users, so no backend is involved after the discovery step.  
 The grid will clear when noone's around anymore.
 
-Uses convienicen library [syncedstore](https://syncedstore.org/docs/) on top of [Yjs](https://docs.yjs.dev).  
+Uses convenience library [syncedstore](https://syncedstore.org/docs/) on top of [Yjs](https://docs.yjs.dev).  
 Those makes this super simple.
 
 Interactive demo: https://lavish-number.surge.sh/
