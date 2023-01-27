@@ -7,39 +7,32 @@
 	};
 	let selectedColor = COLORS.BLACK;
 
-	onMount(() => {
-		connectStoreSync();
-	});
+	onMount(connectStoreSync);
 
 	/**
 	 * @param {string} key
 	 */
-	function toggleCell(key) {
-		$svelteStore.grid[key] = { color: selectedColor };
-	}
+	const colorCell = (key) => ($svelteStore.grid[key] = { color: selectedColor });
 </script>
 
 <div>
 	{#each { length: GRID.ROWS } as _, rowI}
 		<div class="row">
-			{#each { length: GRID.COLS } as col, colI}
+			{#each { length: GRID.COLS } as _, colI}
 				{@const key = makeKey(rowI, colI)}
 				<div class="col">
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<div
 						class="cell"
-						on:click={() => toggleCell(key)}
-						style="background-color: {$svelteStore.grid[key]?.color || COLORS.WHITE};"
+						on:click={() => colorCell(key)}
+						style="--bg-color: {$svelteStore.grid[key]?.color || COLORS.WHITE};"
 					/>
 				</div>
 			{/each}
 		</div>
 	{/each}
 </div>
-
-<div>
-	<input type="color" bind:value={selectedColor} />
-</div>
+<div><input type="color" bind:value={selectedColor} /></div>
 
 <style>
 	:global(body) {
@@ -62,6 +55,7 @@
 	.cell {
 		width: 100%;
 		height: 100%;
+		background-color: var(--bg-color, #fff);
 	}
 	div:has(> .row) {
 		margin-top: 32px;
