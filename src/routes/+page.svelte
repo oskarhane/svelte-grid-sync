@@ -3,8 +3,7 @@
 	import { svelteStore, GRID, connectStoreSync, makeKey } from '../lib/grid.store.js';
 	const COLORS = {
 		WHITE: '#ffffff',
-		BLACK: '#000000',
-		RED: '#ff0000'
+		BLACK: '#000000'
 	};
 	let selectedColor = COLORS.BLACK;
 
@@ -39,18 +38,7 @@
 </div>
 
 <div>
-	<button
-		on:click={() => (selectedColor = COLORS.WHITE)}
-		class:selected-color={selectedColor === COLORS.WHITE}>White</button
-	>
-	<button
-		on:click={() => (selectedColor = COLORS.BLACK)}
-		class:selected-color={selectedColor === COLORS.BLACK}>Black</button
-	>
-	<button
-		on:click={() => (selectedColor = COLORS.RED)}
-		class:selected-color={selectedColor === COLORS.RED}>Red</button
-	>
+	<input type="color" bind:value={selectedColor} />
 </div>
 
 <style>
@@ -81,20 +69,17 @@
 		flex-direction: column;
 		align-items: center;
 	}
-	div:has(> button) {
+	div:has(> input) {
 		margin-top: 16px;
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
-		gap: 8px;
+		align-items: center;
 	}
-	button {
+	[type='color'] {
+		width: 64px;
+		height: 32px;
+		background-color: transparent;
 		border: 0;
-		border-radius: 4px;
-		padding: 4px 16px;
-	}
-	.selected-color {
-		background-color: #000000;
-		color: #ffffff;
 	}
 </style>
